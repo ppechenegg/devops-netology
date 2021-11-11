@@ -1,5 +1,6 @@
 # devops-netology
 test
+new line
 
 Будут проигнорированы:
 
