@@ -1,2 +1,3 @@
 will_be_moved
 test line for commit from IDE
+test line for test merge 
