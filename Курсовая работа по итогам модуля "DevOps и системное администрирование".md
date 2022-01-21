@@ -1,6 +1,7 @@
 ## Задание
 
-1. Создайте виртуальную машину Linux.
+1. Создайте виртуальную машину Linux.  ![1](https://user-images.githubusercontent.com/33546071/150525487-87c567f3-8e1b-4e6f-89c2-ded7c2631f68.jpg)
+
 2. Установите ufw и разрешите к этой машине сессии на порты 22 и 443, при этом трафик на интерфейсе localhost (lo) должен ходить свободно на все порты.
 3. Установите hashicorp vault ([инструкция по ссылке](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault)).
 4. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
