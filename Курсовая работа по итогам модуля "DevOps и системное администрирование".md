@@ -22,6 +22,7 @@ Status: active
 ## 3. Установите hashicorp vault ([инструкция по ссылке](https://learn.hashicorp.com/tutorials/vault/getting-started-install?in=vault/getting-started#install-vault)).  
 
 Установка достаточно простая:  
+
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -  
 sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"  
 sudo apt-get update && sudo apt-get install vault  
@@ -29,7 +30,10 @@ sudo apt-get update && sudo apt-get install vault
 ## 4. Cоздайте центр сертификации по инструкции ([ссылка](https://learn.hashicorp.com/tutorials/vault/pki-engine?in=vault/secrets-management)) и выпустите сертификат для использования его в настройке веб-сервера nginx (срок жизни сертификата - месяц).
 
 apt-get install jq  
-Открываем 2 терминала, в первом: vault server -dev -dev-root-token-id root  
+Открываем 2 терминала, в первом: 
+
+vault server -dev -dev-root-token-id root  
+
 во втором:  
 
 export VAULT_ADDR=http://127.0.0.1:8200  
