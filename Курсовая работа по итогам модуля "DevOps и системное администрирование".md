@@ -150,7 +150,22 @@ chmod +x cert.sh
 Создан крон на запуск каждые 5 минут
 
 crontab -e
-*/5 * * * * /home/pg/cert.sh
+*/5 * * * * /home/pg/cert.sh  
+
+Фрагмент /var/log/syslog  
+
+Jan 28 10:30:01 ubuntu2004 CRON[961]: (root) CMD (/home/pg/cert.sh)  
+Jan 28 10:30:01 ubuntu2004 systemd[1]: Stopping A high performance web server and a reverse proxy server...  
+Jan 28 10:30:01 ubuntu2004 systemd[1]: nginx.service: Succeeded.  
+Jan 28 10:30:01 ubuntu2004 systemd[1]: Stopped A high performance web server and a reverse proxy server.  
+Jan 28 10:30:01 ubuntu2004 systemd[1]: Starting A high performance web server and a reverse proxy server...  
+Jan 28 10:30:01 ubuntu2004 systemd[1]: Started A high performance web server and a reverse proxy server.  
+Jan 28 10:30:01 ubuntu2004 CRON[960]: (CRON) info (No MTA installed, discarding output)  
+
+Виднто что скрипт запускался, nginx был перезапущен, сертификат обновился:  
+
+![image](https://user-images.githubusercontent.com/33546071/151505566-c91d4e2d-d907-4820-a42a-9ea5066849a4.png)
+
 
 ## Результат
 
