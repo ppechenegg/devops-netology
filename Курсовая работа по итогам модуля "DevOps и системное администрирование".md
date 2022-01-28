@@ -122,9 +122,35 @@ systemctl restart nginx (перезапускаем nginx для примене�
 ## 9. Создайте скрипт, который будет генерировать новый сертификат в vault:  
   - генерируем новый сертификат так, чтобы не переписывать конфиг nginx;  
   - перезапускаем nginx для применения нового сертификата.  
+
+в домашней директории создан скрипт cert.sh :  
+
+
+#!/usr/bin/env bash
+cd /home/pg
+export VAULT_ADDR=http://127.0.0.1:8200
+export VAULT_TOKEN=root
+vault write -format=json pki_int/issue/example-dot-com common_name="test.example.com" ttl="750h" > cert_data.json
+if [ "$?" -eq "0" ]
+then
+cat cert_data.json | jq -r .data.certificate > /etc/nginx/ssl/cert.crt
+cat cert_data.json | jq -r .data.private_key > /etc/nginx/ssl/key.key
+systemctl restart nginx
+echo New certificate successfully issued
+rm cert_data.json
+else
+        echo Error
+fi
+
+chmod +x cert.sh
+
+
 ## 10. Поместите скрипт в crontab, чтобы сертификат обновлялся какого-то числа каждого месяца в удобное для вас время.  
 
+Создан крон на запуск каждые 5 минут
 
+crontab -e
+*/5 * * * * /home/pg/cert.sh
 
 ## Результат
 
